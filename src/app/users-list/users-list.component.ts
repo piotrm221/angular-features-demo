@@ -6,13 +6,13 @@ import {
   signal,
 } from '@angular/core';
 import { User, UserService } from '../user.service';
+import { CommentsComponent } from '../comments/comments.component';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './users-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, CommentsComponent],
+  templateUrl: './users-list.component.html'
 })
 export class UsersListComponent {
   users: WritableSignal<User[]> = signal([]);

@@ -13,6 +13,7 @@
           </tr>
         </thead>
         <tbody class="bg-white dark:bg-slate-800">
+
           @for (user of users(); track user.name) {
             <tr>
               <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ user.name }}</td>
@@ -31,6 +32,7 @@
           } @empty {
             Empty list...
           }
+
         </tbody>
       </table>
     </div>
@@ -40,4 +42,16 @@
       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
     </svg>
   }
+
+  @defer (on viewport) {
+    <app-comments></app-comments>
+  } @loading (after 100ms; minimum 2000ms) {
+    Loading…
+  } @placeholder {
+    <!-- A placeholder content to show until the comments load -->
+    <div>Placeholder</div>
+  } @error {
+    Loading failed
+  }
+
 </section>
