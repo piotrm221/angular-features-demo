@@ -1,10 +1,18 @@
-<div class="container flex flex-col gap-2 justify-center items-center m-auto p-5">
-  <h1 class="text-3xl">Subs app</h1>
-  <span class="text-base text-gray-900"> This channel has: {{ subs() }} subs</span>
-  <div class="flex gap-2">
-    <button (click)="addSub()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</button>
-    <button (click)="subtractSub()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">-</button>
-  </div>
-  <span>Percentage of subs to get silver button: {{ subsToSilverButtonPercentage() }}</span>
-</div>
+<main class="container flex flex-col gap-2 m-auto p-5 min-h-screen">
+  <section class="flex flex-col gap-2 justify-center items-center p-5">
+    <h1 class="text-3xl">Subs app</h1>
+    <span class="text-base text-gray-900"> This channel has: {{ subs() }} subs</span>
+    <div class="flex gap-2">
+      <button (click)="addSub()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</button>
+      <button (click)="subtractSub()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">-</button>
+    </div>
+    <span>Percentage of subs to get silver button: {{ subsToSilverButtonPercentage() }}</span>
+  </section>
+
+  <app-users-list></app-users-list>
+</main>
+
+
+
+
 

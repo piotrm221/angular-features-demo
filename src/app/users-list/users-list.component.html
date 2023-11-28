@@ -1,0 +1,43 @@
+<section class="flex flex-col items-center gap-2">
+  <h2 class="text-2xl">Users list</h2>
+
+  @if (users().length > 0) {
+    <div class="shadow-md overflow-hidden my-8">
+      <table class="border-collapse table-auto w-full text-sm">
+        <thead>
+          <tr>
+            <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Name</th>
+            <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Age</th>
+            <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Role</th>
+            <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Access</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white dark:bg-slate-800">
+          @for (user of users(); track user.name) {
+            <tr>
+              <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ user.name }}</td>
+              <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">{{ user.age }}</td>
+              <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">{{ user.role }}</td>
+              <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                @switch (user.role) {
+                  @case ('admin') { <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">All</span>  }
+                  @case ('user') { <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Normal</span> }
+                  @default {
+                    <span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">Restricted</span>
+                     }
+                }
+              </td>
+            </tr>
+          } @empty {
+            Empty list...
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <svg class="animate-spin -ml-1 mr-3 h-6 w-6 text-blue-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+  }
+</section>
